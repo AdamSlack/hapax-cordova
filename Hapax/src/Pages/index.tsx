@@ -1,2 +1,2 @@
-export * from './Home'
-export * from './About'
+export * from './HomePage'
+export * from './NextUIRHFDemoPage'

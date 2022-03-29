@@ -1,28 +1,13 @@
-import { useState } from 'react';
-import { createTheme, ThemeType } from '@nextui-org/react'
-
-const lightTheme = createTheme({
-  type: 'light',
-});
-
-const darkTheme = createTheme({
-  type: 'dark',
-})
-
-export type SetTheme = React.Dispatch<React.SetStateAction<ThemeType>>;
+import { useContext } from 'react';
+import { ThemeContext } from '../../Providers/ThemeProvider';
 
 export const useTheme = () => {
-  const [ theme, setTheme ] = useState<ThemeType>('dark');
-
-  const themes = {
-    'light': lightTheme,
-    'dark': darkTheme
+  const themeContext = useContext(ThemeContext);
+  if(!themeContext) {
+    throw new Error('useTheme must be used within a child of the ThemeProvider');
   }
 
-  return {
-    setTheme,
-    theme: themes[theme],
-  }
+  return themeContext;
 }
 
 export default useTheme
