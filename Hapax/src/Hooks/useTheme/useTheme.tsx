@@ -10,4 +10,4 @@ export const useTheme = () => {
   return themeContext;
 }
 
-export default useTheme
+export default useTheme;
